@@ -40,3 +40,7 @@ Thumbs.db
 *.tmp
 *.bak
 *.swp
+
+# Presentation files (local only)
+DASHBOARD_WALKTHROUGH_GUIDE.md
+PRESENTATION_AND_VIVA_GUIDE.md
