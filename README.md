@@ -2,11 +2,12 @@
 
 An interactive web dashboard for analyzing cryptocurrency prices using time series forecasting models including ARIMA, SARIMA, Prophet, and LSTM.
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://your-app-url.streamlit.app)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://pendyalapradeepreddy-cryptocurrency-time-se-dashboardapp-ut3phg.streamlit.app/)
 
 ## 🚀 Live Demo
 
-Visit the live dashboard: [https://cryptocurrency-time-series-analysis.streamlit.app](https://cryptocurrency-time-series-analysis.streamlit.app)
+Visit the live dashboard: **[Crypto Analytics Dashboard](https://pendyalapradeepreddy-cryptocurrency-time-se-dashboardapp-ut3phg.streamlit.app/)**
+
 
 ## 📈 Features
 
@@ -67,15 +68,6 @@ streamlit run dashboard/app.py
 ```
 
 The dashboard will open at `http://localhost:8501`
-
-## 🌐 Deploy to Streamlit Cloud
-
-1. Fork this repository
-2. Go to [share.streamlit.io](https://share.streamlit.io)
-3. Click "New app"
-4. Select your forked repository
-5. Set main file path: `dashboard/app.py`
-6. Click "Deploy"
 
 ## 📊 Data Source
 
