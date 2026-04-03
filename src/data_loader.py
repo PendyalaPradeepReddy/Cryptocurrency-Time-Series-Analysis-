@@ -19,6 +19,14 @@ def load_main_data() -> pd.DataFrame:
     Returns:
         DataFrame with all cryptocurrency data
     """
+    # Check if file exists
+    if not os.path.exists(config.DATA_FILE):
+        raise FileNotFoundError(
+            f"Data file not found: {config.DATA_FILE}\n"
+            f"Project root: {config.BASE_DIR}\n"
+            f"Current directory: {os.getcwd()}"
+        )
+    
     df = pd.read_csv(config.DATA_FILE)
     
     # Standardize column names
@@ -110,7 +118,7 @@ def add_features(df: pd.DataFrame) -> pd.DataFrame:
     df['macd'], df['macd_signal'], df['macd_histogram'] = calculate_macd(df['close'])
     
     # Fill NaN values
-    df = df.fillna(method='bfill').fillna(0)
+    df = df.bfill().fillna(0)
     
     return df
 

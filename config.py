@@ -4,8 +4,14 @@ Configuration settings for Cryptocurrency Time Series Analysis
 import os
 from datetime import datetime, timedelta
 
-# Project Paths
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# Project Paths - Use absolute path resolution to work with Streamlit deployment
+def get_project_root():
+    """Get the project root directory reliably"""
+    # Get the directory where this config.py file is located
+    config_dir = os.path.dirname(os.path.abspath(__file__))
+    return config_dir
+
+BASE_DIR = get_project_root()
 DATA_DIR = os.path.join(BASE_DIR, "data")
 RAW_DATA_DIR = os.path.join(DATA_DIR, "raw")
 PROCESSED_DATA_DIR = os.path.join(DATA_DIR, "processed")
@@ -40,8 +46,13 @@ CRYPTO_LIST = {
     "XLM": {"symbol": "XLM", "name": "Stellar"}
 }
 
-# Data file path
+# Data file path - with fallback for Streamlit Cloud
 DATA_FILE = os.path.join(BASE_DIR, "main_df_enhanced.csv")
+if not os.path.exists(DATA_FILE):
+    # Fallback: try to find it in parent directory (in case running from subdirectory)
+    parent_data_file = os.path.join(os.path.dirname(BASE_DIR), "main_df_enhanced.csv")
+    if os.path.exists(parent_data_file):
+        DATA_FILE = parent_data_file
 
 # Data Collection Settings
 DEFAULT_DAYS = 1095  # ~3 years of data

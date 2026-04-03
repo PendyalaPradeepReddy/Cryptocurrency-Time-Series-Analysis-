@@ -1,0 +1,8 @@
+[client]
+showErrorDetails = true
+
+[logger]
+level = "debug"
+
+[client.toolbarMode]
+toolbarMode = "developer"

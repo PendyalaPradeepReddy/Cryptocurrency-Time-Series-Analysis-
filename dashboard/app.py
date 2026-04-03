@@ -267,21 +267,37 @@ def main():
     # Load data on first run
     if not st.session_state.data_loaded:
         with st.spinner("Loading cryptocurrency data..."):
-            st.session_state.processed_data = load_all_coin_data()
-            st.session_state.data_loaded = True
+            try:
+                st.session_state.processed_data = load_all_coin_data()
+                st.session_state.data_loaded = True
+            except FileNotFoundError as e:
+                st.session_state.data_loaded = False
+                st.session_state.processed_data = {}
     
     # Header
     st.markdown('<h1 class="main-header">📊 Crypto Analytics Dashboard</h1>', unsafe_allow_html=True)
     st.markdown('<p style="text-align: center; color: #888;">Real-time cryptocurrency analysis and forecasting</p>', unsafe_allow_html=True)
     
     # Sidebar
-    selected_coin = sidebar_controls()
+    try:
+        selected_coin = sidebar_controls()
+    except FileNotFoundError as e:
+        st.error(f"❌ Failed to load data!\n\n{str(e)}")
+        st.info("**Troubleshooting:**\n- Ensure main_df_enhanced.csv exists in the project root\n- Check file permissions\n- Verify the app is running from the correct directory")
+        return
     
     # Main content
     if st.session_state.processed_data:
         main_content(selected_coin)
     else:
-        st.error("Failed to load data. Please check that main_df_enhanced.csv exists.")
+        st.error(f"Failed to load data. Please check that main_df_enhanced.csv exists.")
+        with st.expander("Debug Info"):
+            st.write(f"Project root: {config.BASE_DIR}")
+            st.write(f"Data file path: {config.DATA_FILE}")
+            st.write(f"Data file exists: {os.path.exists(config.DATA_FILE)}")
+            st.write(f"Current working directory: {os.getcwd()}")
+            st.write(f"Data directory: {config.DATA_DIR}")
+            st.write(f"Data directory contents: {os.listdir(config.DATA_DIR) if os.path.exists(config.DATA_DIR) else 'Not found'}")
 
 
 if __name__ == "__main__":

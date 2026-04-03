@@ -68,10 +68,24 @@ def create_sparkline(df: pd.DataFrame, days: int = 30) -> go.Figure:
 def main():
     # Load data
     with st.spinner("Loading cryptocurrency data..."):
-        data = load_all_data()
+        try:
+            data = load_all_data()
+        except FileNotFoundError as e:
+            st.error(f"❌ Failed to load data: {str(e)}")
+            with st.expander("Debug Info"):
+                st.write(f"Project root: {config.BASE_DIR}")
+                st.write(f"Data file path: {config.DATA_FILE}")
+                st.write(f"Data file exists: {os.path.exists(config.DATA_FILE)}")
+            return
     
     if not data:
-        st.warning("No data could be loaded. Please check that main_df_enhanced.csv exists.")
+        st.warning("⚠️ No data could be loaded. Please check that main_df_enhanced.csv exists and contains data.")
+        with st.expander("Troubleshooting"):
+            st.write(f"**Data file location:** {config.DATA_FILE}")
+            st.write(f"**File exists:** {os.path.exists(config.DATA_FILE)}")
+            if os.path.exists(config.DATA_FILE):
+                df_test = pd.read_csv(config.DATA_FILE)
+                st.write(f"**File has {len(df_test)} rows**")
         return
     
     # Market Overview Cards
