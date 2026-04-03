@@ -14,16 +14,16 @@ The 8 dashboard visualization images in the `figures/` directory showcase the 30
 
 ### Image-to-Dashboard Page Mapping
 
-| Image | Dashboard Page | Purpose |
-|-------|----------------|---------|
-| 01_30day_returns.png | Executive Summary | Show top performers |
-| 02_price_trends.png | Price Trends | Demonstrate trend visualization |
-| 03_volatility.png | Volatility | Risk analysis reference |
-| 04_volume_heatmap.png | Model Comparison | Volume patterns analysis |
-| 05_correlation.png | Risk Indicators | Asset relationship insights |
-| 06_ohlc_candles.png | Price Trends | Technical analysis example |
-| 07_returns_distribution.png | Forecasts | Return distribution understanding |
-| 08_cumulative_returns.png | Executive Summary | Performance tracking |
+| Image                       | Dashboard Page    | Purpose                           |
+| --------------------------- | ----------------- | --------------------------------- |
+| 01_30day_returns.png        | Executive Summary | Show top performers               |
+| 02_price_trends.png         | Price Trends      | Demonstrate trend visualization   |
+| 03_volatility.png           | Volatility        | Risk analysis reference           |
+| 04_volume_heatmap.png       | Model Comparison  | Volume patterns analysis          |
+| 05_correlation.png          | Risk Indicators   | Asset relationship insights       |
+| 06_ohlc_candles.png         | Price Trends      | Technical analysis example        |
+| 07_returns_distribution.png | Forecasts         | Return distribution understanding |
+| 08_cumulative_returns.png   | Executive Summary | Performance tracking              |
 
 ## How to Use the Images
 
@@ -55,6 +55,7 @@ plt.show()
 ## Data Behind the Images
 
 All images are generated from:
+
 - **File:** `main_df_enhanced.csv`
 - **Records:** 41,040 hourly candles
 - **Period:** June 1 - July 1, 2021
@@ -70,6 +71,7 @@ python generate_dashboard_images.py
 ```
 
 Output:
+
 - Overwrites existing PNG files in `figures/`
 - Takes ~30 seconds
 - No dependencies beyond matplotlib, seaborn, pandas, numpy
@@ -103,44 +105,52 @@ figures/
 ## Key Findings Visualized
 
 ### Return Analysis (Image 1)
+
 - DOGE: +103.26% (best performer)
 - ADA: +75.29% (strong performer)
 - ETC: +53.49% (solid returns)
 - Several cryptos with negative returns (market correction period)
 
 ### Price Movement (Image 2)
+
 - Steep rally in final week (June 29-July 1)
 - Synchronized price movements across top performers
 - Clear trend breakout pattern
 
 ### Volatility (Image 3)
+
 - DOGE: 2.41% daily volatility (highest risk)
 - ADA: 2.11% (high volatility)
 - BTC: 0.94% (stable baseline)
 - Range: 0.94% - 2.41% across all symbols
 
 ### Volume Patterns (Image 4)
+
 - High volume spike on June 30-July 1
 - Concentrated trading activity
 - Liquidity improvements toward period end
 
 ### Correlation (Image 5)
+
 - Altcoins show positive correlation with each other
 - Bitcoin shows weak correlation (leading indicator)
 - Stablecoins highly correlated (~1.0)
 
 ### Technical Analysis (Image 6)
+
 - DOGE: Weekly candles show strong uptrend
 - Final week massive reversal up
 - Clear breakout in week 4
 
 ### Distribution (Image 7)
+
 - DOGE: Mean +0.05% daily return, fat tails
 - ADA: Mean +0.04% daily return
 - ETC: Mean +0.03% daily return
 - Right-skewed distributions (positive bias)
 
 ### Cumulative Performance (Image 8)
+
 - Clear outperformance hierarchy
 - Divergence increases over time
 - Market segmentation visible
@@ -150,6 +160,7 @@ figures/
 ### Customizing Image Generation
 
 Edit `generate_dashboard_images.py` to:
+
 - Change date ranges
 - Modify color schemes
 - Adjust chart dimensions
@@ -173,6 +184,7 @@ Edit `generate_dashboard_images.py` to:
 ## Support
 
 For questions about:
+
 - **Chart interpretation:** See DASHBOARD_VISUALIZATIONS_GALLERY.md
 - **Data source:** See README.md
 - **Regeneration:** Run `python generate_dashboard_images.py --help`
