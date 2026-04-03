@@ -8,7 +8,6 @@ An interactive web dashboard for analyzing cryptocurrency prices using time seri
 
 Visit the live dashboard: **[Crypto Analytics Dashboard](https://pendyalapradeepreddy-cryptocurrency-time-se-dashboardapp-ut3phg.streamlit.app/)**
 
-
 ## 📈 Features
 
 - **Multi-Coin Support**: Bitcoin (BTC), Ethereum (ETH), and 15 other cryptocurrencies
@@ -16,18 +15,47 @@ Visit the live dashboard: **[Crypto Analytics Dashboard](https://pendyalapradeep
 - **Interactive Dashboard**: 7 pages with 10+ visualizations
 - **Risk Analytics**: VaR, Sharpe ratio, Max Drawdown, Volatility regimes
 - **Technical Indicators**: RSI, MACD, Bollinger Bands, Moving Averages
+- **30-Day Dataset**: Extended cryptocurrency data with 41,040 hourly records
+
+## 📊 Dashboard Visualizations
+
+### 30-Day Cryptocurrency Analysis
+
+![30-Day Returns](figures/01_30day_returns.png)
+_Figure 1: 30-Day Returns Comparison - Top performers: DOGE (+103%), ADA (+75%), ETC (+53%)_
+
+![Price Trends](figures/02_price_trends.png)
+_Figure 2: Price Trends - Top 5 performers over 30 days with normalized movement_
+
+![Volatility](figures/03_volatility.png)
+_Figure 3: Volatility Comparison - Risk analysis across all 19 cryptocurrencies_
+
+![Volume Heatmap](figures/04_volume_heatmap.png)
+_Figure 4: Daily Volume Heatmap - Trading patterns across 30 days and all symbols_
+
+![Correlation](figures/05_correlation.png)
+_Figure 5: Price Correlation Matrix - Relationships between cryptocurrency returns_
+
+![OHLC Chart](figures/06_ohlc_candles.png)
+_Figure 6: OHLC Candlestick Analysis - Weekly price movements for DOGE_
+
+![Distribution](figures/07_returns_distribution.png)
+_Figure 7: Daily Returns Distribution - Top 4 performers statistical analysis_
+
+![Cumulative Returns](figures/08_cumulative_returns.png)
+_Figure 8: Cumulative Returns - All 19 cryptocurrencies performance tracking_
 
 ## 📁 Dashboard Pages
 
-| Page | Description |
-|------|-------------|
-| 🏠 **Home** | Overview with KPIs, price charts, and technical indicators |
+| Page                     | Description                                                |
+| ------------------------ | ---------------------------------------------------------- |
+| 🏠 **Home**              | Overview with KPIs, price charts, and technical indicators |
 | 📊 **Executive Summary** | Market overview with sparklines and performance comparison |
-| 📈 **Price Trends** | Detailed charts with candlesticks and indicators |
-| 📊 **Volatility** | Risk metrics, VaR, drawdown analysis |
-| 🔍 **Model Comparison** | Compare all 4 forecasting models side-by-side |
-| 🔮 **Forecasts** | Generate price predictions with confidence intervals |
-| ⚠️ **Risk Indicators** | Risk scores and automated market alerts |
+| 📈 **Price Trends**      | Detailed charts with candlesticks and indicators           |
+| 📊 **Volatility**        | Risk metrics, VaR, drawdown analysis                       |
+| 🔍 **Model Comparison**  | Compare all 4 forecasting models side-by-side              |
+| 🔮 **Forecasts**         | Generate price predictions with confidence intervals       |
+| ⚠️ **Risk Indicators**   | Risk scores and automated market alerts                    |
 
 ## 🛠️ Tech Stack
 
@@ -44,12 +72,14 @@ Visit the live dashboard: **[Crypto Analytics Dashboard](https://pendyalapradeep
 ### Local Setup
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/PendyalaPradeepReddy/Cryptocurrency-Time-Series-Analysis-.git
 cd Cryptocurrency-Time-Series-Analysis-
 ```
 
 2. Create a virtual environment:
+
 ```bash
 python -m venv venv
 venv\Scripts\activate  # Windows
@@ -58,11 +88,13 @@ source venv/bin/activate  # Linux/Mac
 ```
 
 3. Install dependencies:
+
 ```bash
 pip install -r requirements.txt
 ```
 
 4. Run the dashboard:
+
 ```bash
 streamlit run dashboard/app.py
 ```
@@ -72,6 +104,7 @@ The dashboard will open at `http://localhost:8501`
 ## 📊 Data Source
 
 The project uses historical cryptocurrency data from **Kaggle** (3 years) stored in `main_df_enhanced.csv` with the following features:
+
 - OHLC prices (Open, High, Low, Close)
 - Volume and Market Cap
 - Technical indicators (RSI, MACD, Bollinger Bands)
@@ -82,15 +115,19 @@ The project uses historical cryptocurrency data from **Kaggle** (3 years) stored
 ## 🔮 Forecasting Models
 
 ### ARIMA
+
 Auto-regressive Integrated Moving Average for linear trends and short-term forecasts.
 
-### SARIMA  
+### SARIMA
+
 Seasonal ARIMA with weekly patterns (period=7) for recurring market cycles.
 
 ### Prophet
+
 Facebook's time series library handling seasonality and trend changes.
 
 ### LSTM
+
 Deep learning neural network capturing complex nonlinear patterns.
 
 ## 📈 Key Metrics
